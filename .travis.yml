@@ -1,0 +1,42 @@
+language: node_js
+cache:
+  directories:
+    - 'node_modules'
+
+notifications:
+  email: mindreeper2420@gmail.com
+
+node_js:
+  - '10'
+
+env:
+  global:
+    - COMMIT_AUTHOR_EMAIL: "mindreeper2420@gmail.com"
+    - TRIGGER_REPO_SLUG: "mindreeper2420/prototype-template.github.io"
+    - TRIGGER_REPO_BRANCH: "master"
+
+before_script:
+  - npm install -g yarn
+
+script: yarn build
+
+jobs:
+  include:
+    # Define the release stage that runs semantic-release
+    - stage: release
+      node_js: lts/*
+      # Advanced: optionally overwrite your default `script` step to skip the tests
+      # script: skip
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
