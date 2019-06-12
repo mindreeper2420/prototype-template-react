@@ -1,9 +1,9 @@
 {
-  "name": "patternfly-seed",
-  "version": "0.0.1",
-  "description": "An open source build scaffolding utility for web apps.",
+  "name": "prototype-template-react",
+  "version": "0.0.0-development",
+  "description": "A prototype template using the PatternFly-React-Seed project template.",
   "main": "index.js",
-  "repository": "https://github.com/patternfly/patternfly-react-seed.git",
+  "repository": "https://github.com/mindreeper2420/prototype-template-react.git",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -14,7 +14,8 @@
     "lint": "tslint -c ./tslint.json --project .",
     "build:bundle-profile": "webpack --profile --json > stats.json",
     "bundle-profile:analyze": "yarn build:bundle-profile && webpack-bundle-analyzer ./stats.json",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@types/enzyme": "^3.9.0",
@@ -58,7 +59,8 @@
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "webpack-merge": "^4.1.4"
+    "webpack-merge": "^4.1.4",
+    "semantic-release": "^15.13.12"
   },
   "dependencies": {
     "@patternfly/react-core": "^3.34.0",
