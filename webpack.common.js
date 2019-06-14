@@ -1,15 +1,26 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index.tsx'
+    app: ['./src/index.tsx', './src/styles/application/index.scss']
+  },
+  output: {
+    path: path.resolve(__dirname, 'assets')
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    })
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/manifest.json',
+        to: '',
+        toType: 'dir'
+      }
+    ])
   ],
   module: {
     rules: [
@@ -18,6 +29,28 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader'
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].css',
+            }
+          }, {
+            loader: 'extract-loader'
+          }, {
+            loader: 'css-loader?-url'
+          }, {
+            loader: 'postcss-loader'
+          }, {
+            loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
+            options: {
+              includePaths: ['styles/application/index.scss']
+            }
           }
         ]
       },
@@ -32,7 +65,7 @@ module.exports = {
             name: '[name].[ext]',
           }
         },
-        include: function(input) {
+        include: function (input) {
           // only process modules with this loader
           // if they live under a 'fonts' or 'pficon' directory
           return input.indexOf('fonts') > -1 || input.indexOf('pficon') > -1;
@@ -46,6 +79,19 @@ module.exports = {
             options: {
               limit: 5000,
               outputPath: 'images',
+              name: '[name].[ext]',
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ico)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 5000,
+              outputPath: '/',
               name: '[name].[ext]',
             }
           }
@@ -71,7 +117,7 @@ module.exports = {
           loader: 'svg-url-loader',
           options: {}
         },
-        include: function(input) {
+        include: function (input) {
           // only process SVG modules with this loader if they live under a 'bgimages' directory
           // this is primarily useful when applying a CSS background using an SVG
           return input.indexOf('bgimages') > -1;
@@ -83,7 +129,7 @@ module.exports = {
           loader: 'raw-loader',
           options: {}
         },
-        include: function(input) {
+        include: function (input) {
           // only process SVG modules with this loader when they don't live under a 'bgimages',
           // 'fonts', or 'pficon' directory, those are handled with other loaders
           return (input.indexOf('bgimages') === -1) &&

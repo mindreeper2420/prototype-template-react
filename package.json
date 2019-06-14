@@ -1,6 +1,6 @@
 {
   "name": "prototype-template-react",
-  "version": "0.0.0-development",
+  "version": "2.0.0-development",
   "description": "A prototype template using the PatternFly-React-Seed project template.",
   "main": "index.js",
   "repository": "https://github.com/mindreeper2420/prototype-template-react.git",
@@ -26,16 +26,21 @@
     "@types/react-dom": "^16.8.2",
     "@types/victory": "^31.0.14",
     "@types/webpack": "^4.4.25",
-    "css-loader": "^2.1.1",
+    "autoprefixer": "^9.6.0",
+    "css-loader": "^3.0.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-to-json": "^3.3.5",
+    "extract-loader": "^3.1.0",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "imagemin": "^6.0.0",
     "jest": "^24.1.0",
     "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "postcss-cli": "^6.1.2",
+    "postcss-loader": "^3.0.0",
     "prettier": "^1.15.2",
     "prop-types": "^15.6.1",
     "raw-loader": "^3.0.0",
@@ -44,6 +49,7 @@
     "react-dom": "^16.6.3",
     "regenerator-runtime": "^0.13.1",
     "rimraf": "^2.6.2",
+    "semantic-release": "^15.13.12",
     "style-loader": "^0.23.1",
     "svg-url-loader": "^2.3.2",
     "ts-jest": "^24.0.0",
@@ -55,15 +61,17 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.3.3333",
     "url-loader": "^2.0.0",
-    "webpack": "^4.25.1",
+    "webpack": "^4.33.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
-    "webpack-merge": "^4.1.4",
-    "semantic-release": "^15.13.12"
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "@patternfly/patternfly": "^2.12.7",
     "@patternfly/react-core": "^3.34.0",
-    "@patternfly/react-icons": "^3.9.3"
+    "@patternfly/react-icons": "^3.9.3",
+    "copy-webpack-plugin": "^5.0.3",
+    "sass-loader": "^7.1.0"
   }
 }

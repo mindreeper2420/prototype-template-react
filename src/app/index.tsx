@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Alert, AlertActionCloseButton, BackgroundImage, BackgroundImageSrc } from '@patternfly/react-core';
 import '@app/app.css';
+import '@favicon/favicon.ico';
 import xs from '@assets/images/pfbg_576.jpg';
 import xs2x from '@assets/images/pfbg_576@2x.jpg';
 import sm from '@assets/images/pfbg_768.jpg';
